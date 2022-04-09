@@ -3,6 +3,7 @@ import discord.ext
 from discord.ext import commands
 
 bot = commands.Bot(command_prefix="teawaffle?")
+client = discord.Client()
 TOKEN = os.getenv("DISCORD_TOKEN")
 
 @bot.event
