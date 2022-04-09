@@ -7,7 +7,7 @@ TOKEN = os.getenv("DISCORD_TOKEN")
 
 @bot.event
 async def on_ready():
-    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="VTubers"))
+    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="VTUBERS"))
     print(f"Logged in as {bot.user.name}({bot.user.id})")
     
 @bot.command()
