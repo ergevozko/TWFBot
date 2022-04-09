@@ -1,1 +1,1 @@
-from command.custom import custom
+import command.custom
