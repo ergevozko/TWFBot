@@ -1,7 +1,7 @@
-import discord
 import os
 import discord.ext
 from discord.ext import commands
+from .context import CustomContext
 
 bot = commands.Bot(command_prefix="teawaffle?")
 TOKEN = os.getenv("DISCORD_TOKEN")
@@ -27,9 +27,19 @@ async def simp(ctx):
 async def tes(ctx):
     await ctx.send("Ti... ga jadi 😝")
 
-@bot.command()
-async def love(ctx):
-    await ctx.send("I... I hate you! BAKA!")
+# @bot.command()
+# async def love_you(ctx):
+#    await ctx.send("I... I hate you! BAKA!")
+    
+class Bot(commands.Bot):
+	"""A subclass of commands.Bot, useful for creating custom context."""
+	async def get_context(self, message, *, cls = CustomContext):
+		return await super().get_context(message, cls = cls)
+    
+class CustomContext(commands.Context):
+	"""An extended context to use in commands."""
+	async def love_you(self):
+		await self.send("I... I hate you! BAKA!")
     
 if __name__ == "__main__":
     bot.run(TOKEN)
