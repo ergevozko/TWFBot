@@ -1,6 +1,6 @@
 import discord
 import os
-from command import * 
+import command.custom 
 
 client = discord.Client()
 TOKEN = os.getenv("DISCORD_TOKEN")
