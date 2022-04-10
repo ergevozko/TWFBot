@@ -6,10 +6,6 @@ class Lawak(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-    @command.Cog.listener()
-    async def on_ready(self):
-        print('TWFBot ready for ngeLawak!')
-
     # >teawaffle_ping
     @command.command()
     async def ping(self, ctx):
