@@ -20,9 +20,9 @@ async def load(ctx, extension):
 async def unload(ctx, extension):
     client.unload_extension(f'cogs.{extension}')
 
-for filename in os.listdir('../cogs'):
+for filename in os.listdir('bot/cogs'):
     if filename.endswith('.py'):
-        client.load_extension(f'cogs{filename[:-3]}')
+        client.load_extension(f'bot.cogs.{filename[:-3]}')
 
 if __name__ == "__main__":
     client.run(TOKEN)
