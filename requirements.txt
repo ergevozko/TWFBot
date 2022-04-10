@@ -1,1 +1,9 @@
-discord.py
+discord.py==1.7.3
+aiohttp==3.8.1
+async-timeout==3.0.1
+attrs==21.4.0
+chardet==4.0.0
+idna==3.3
+multidict==6.0.2
+typing-extensions==4.1.1
+yarl==1.7.2
