@@ -1,9 +1,9 @@
 discord.py==1.7.3
 aiohttp==3.7.3
 async-timeout==3.0.1
-attrs==21.4.0
-chardet==4.0.0
-idna==3.3
-multidict==6.0.2
-typing-extensions==4.1.1
-yarl==1.7.2
+attrs==20.3.0
+chardet==3.0.4
+idna==3.1
+multidict==5.1.0
+typing-extensions==3.7.4.3
+yarl==1.6.3
