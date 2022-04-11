@@ -29,8 +29,8 @@ class testWelcomer(commands.Cog):
     @commands.command()
     @commands.is_owner()
     async def testwelcome(self, ctx, user: discord.Member):
+        text = "Halo"+user.mention+", selamat datang dan semoga betah di TeaWaffle!\n\nJangan lupa baca dulu peraturan server di 『 📜｜rules 』 » lalu perkenalkan dirimu di 『 👋｜introduction 』 » setelah itu pilih roles agar bisa berinteraksi dan dapat informasi menarik lainnya di 『 🥇｜get-roles 』"
         with BytesIO() as image_binary:
-            text = ("Halo"+user.mention+", selamat datang dan semoga betah di TeaWaffle!\n\nJangan lupa baca dulu peraturan server di 『 📜｜rules 』 » lalu perkenalkan dirimu di 『 👋｜introduction 』 » setelah itu pilih roles agar bisa berinteraksi dan dapat informasi menarik lainnya di 『 🥇｜get-roles 』")
             
             useravatar = user.avatar_url_as(size=500)  # Profilepicture = member.avatar_url_as(size=500)
             datavatar = BytesIO(await useravatar.read())
@@ -48,10 +48,13 @@ class testWelcomer(commands.Cog):
             draw.text((62, 420), msgbot, (255, 255, 255), font=msgtopfont) #draws bottom text
             
             img.paste(pfp, (430,70), pfp) # Pastes the Profilepicture on the Background Image
-            img.save(image_binary, 'PNG')
-            image_binary.seek(0)
             
-            await ctx.send(file=discord.File(fp=image_binary, filename='card.png'), text)
+            arr = io.BytesIO()
+            img.save(arr, format='PNG') # img.save(image_binary, 'PNG')
+            arr.seek(0) # image_binary.seek(0)
+            imgFile = discord.File(arr)
+            
+            await ctx.send(file=imgFile, text)
 
 def setup(client):
     client.add_cog(testWelcomer(client))
