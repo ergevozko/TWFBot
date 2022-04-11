@@ -32,19 +32,21 @@ class testWelcomer(commands.Cog):
         maskdraw.ellipse((0, 0) + bigsize, fill=255)
         mask = mask.resize(avatar.size, Image.ANTIALIAS)
         mask = ImageChops.darker(mask, avatar.split()[-1])
-        avatar.putalpha(mask)
+        # avatar.putalpha(mask)
         avatar = avatar.resize((240,240), Image.ANTIALIAS).convert("RGBA")
 
         img = Image.open("bot/resources/welcomer/twfcard.png")
         draw = ImageDraw.Draw(img)
         msgtop = "{} just joined the server".format(user.name)
         msgtopfont = ImageFont.truetype("bot/resources/welcomer/shentox-medium.otf", 42)
+        wt, ht = draw.textsize(msgtop, msgtopfont)
         msgbot = ("Member #" + str(ctx.guild.member_count))
-        msgbotfont = ImageFont.truetype("bot/resources/welcomer/shentox-medium.otf", 22)
-        draw.text((62, 340), msgtop, (255, 255, 255), font=msgtopfont) #draws top text
-        draw.text((62, 420), msgbot, (255, 255, 255), font=msgtopfont) #draws bottom text
+        msgbotfont = ImageFont.truetype("bot/resources/welcomer/shentox-medium.otf", 28)
+        wb, hb = draw.textsize(msgbot, msgbotfont)
+        draw.text(( (img.width - wt)/2, 340), msgtop, (255, 255, 255), font=msgtopfont)
+        draw.text(( (img.width - wb)/2, 400), msgbot, (136, 136, 136), font=msgbotfont)
 
-        img.paste(avatar, (430,70), avatar) # Pastes the Profilepicture on the Background Image
+        img.paste(avatar, (430,70), avatar)
 
         with BytesIO() as image_binary:
             img.save(image_binary, 'PNG')
