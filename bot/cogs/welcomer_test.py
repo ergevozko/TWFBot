@@ -33,7 +33,7 @@ class testWelcomer(commands.Cog):
             maskdraw = ImageDraw.Draw(mask)
             maskdraw.ellipse((0, 0) + bigsize, fill=255)
             mask = mask.resize(avatar.size, Image.ANTIALIAS)
-            mask = ImageChops.darker(mask, pfp.split()[-1])
+            mask = ImageChops.darker(mask, avatar.split()[-1])
             avatar.putalpha(mask)
             avatar = avatar.resize((240,240), Image.ANTIALIAS).convert("RGBA")
             
