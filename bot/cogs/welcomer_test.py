@@ -37,12 +37,12 @@ class testWelcomer(commands.Cog):
             avatar.putalpha(mask)
             avatar = avatar.resize((240,240), Image.ANTIALIAS).convert("RGBA")
             
-            img = Image.open("bot\resources\welcomer\twfcard.png")
+            img = Image.open("bot/resources/welcomer/twfcard.png")
             draw = ImageDraw.Draw(img)
             msgtop = user.id + "just joined the server"
-            msgtopfont = ImageFont.truetype("bot\resources\welcomer\shentox-medium.otf", 42)
+            msgtopfont = ImageFont.truetype("bot/resources/welcomer/shentox-medium.otf", 42)
             msgbot = ("Member #" + str(guild.member_count))
-            msgbotfont = ImageFont.truetype("bot\resources\welcomer\shentox-medium.otf", 28)
+            msgbotfont = ImageFont.truetype("bot/resources/welcomer/shentox-medium.otf", 28)
             draw.text((62, 340), msgtop, (255, 255, 255), font=msgtopfont) #draws top text
             draw.text((62, 420), msgbot, (255, 255, 255), font=msgtopfont) #draws bottom text
             
