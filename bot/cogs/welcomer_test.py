@@ -8,13 +8,17 @@ import datetime
 import random
 import numpy as np
 
+class _circle():
+    
+
 class testWelcomer(commands.Cog):
 
     def __init__(self, client):
         self.client = client
 
-    # Test Welcome Message trigger with command
-    
+
+    # Code to round the Image (Profilepicture)
+    @staticmethod
     def circle(pfp,size = (240,240)):
         pfp = pfp.resize(size, Image.ANTIALIAS).convert("RGBA")
         bigsize = (pfp.size[0] * 3, pfp.size[1] * 3)
@@ -26,6 +30,8 @@ class testWelcomer(commands.Cog):
         pfp.putalpha(mask)
         return pfp
 
+
+    # Test Welcome Message trigger with command
     @commands.command()
     @commands.is_owner()
     async def testwelcome(self, ctx, user: discord.Member):
