@@ -41,7 +41,7 @@ class testWelcomer(commands.Cog):
             draw = ImageDraw.Draw(img)
             msgtop = "{} just joined the server".format(user.id)
             msgtopfont = ImageFont.truetype("bot/resources/welcomer/shentox-medium.otf", 42)
-            msgbot = ("Member #" + ctx.guild.member_count)
+            msgbot = ("Member #" + str(ctx.guild.member_count))
             msgbotfont = ImageFont.truetype("bot/resources/welcomer/shentox-medium.otf", 28)
             draw.text((62, 340), msgtop, (255, 255, 255), font=msgtopfont) #draws top text
             draw.text((62, 420), msgbot, (255, 255, 255), font=msgtopfont) #draws bottom text
