@@ -37,21 +37,19 @@ class testWelcomer(commands.Cog):
 
         img = Image.open("bot/resources/welcomer/twfcard.png")
         draw = ImageDraw.Draw(img)
-        msgtop = "{} just joined the server".format(user.id)
+        msgtop = "{} just joined the server".format(user.name)
         msgtopfont = ImageFont.truetype("bot/resources/welcomer/shentox-medium.otf", 42)
         msgbot = ("Member #" + str(ctx.guild.member_count))
-        msgbotfont = ImageFont.truetype("bot/resources/welcomer/shentox-medium.otf", 28)
+        msgbotfont = ImageFont.truetype("bot/resources/welcomer/shentox-medium.otf", 22)
         draw.text((62, 340), msgtop, (255, 255, 255), font=msgtopfont) #draws top text
         draw.text((62, 420), msgbot, (255, 255, 255), font=msgtopfont) #draws bottom text
 
         img.paste(avatar, (430,70), avatar) # Pastes the Profilepicture on the Background Image
 
-        arr = BytesIO()
-        img.save(arr, format='PNG') # img.save(image_binary, 'PNG')
-        arr.seek(0) # image_binary.seek(0) 
-        imgFile = discord.File(arr)
-            
-        await ctx.send(file=imgFile)
+        with BytesIO() as image_binary:
+            image.save(image_binary, 'PNG')
+            image_binary.seek(0)
+            await ctx.send(file=discord.File(fp=image_binary, filename='card.png'))
 
 def setup(client):
     client.add_cog(testWelcomer(client))
