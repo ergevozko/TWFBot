@@ -47,7 +47,7 @@ class testWelcomer(commands.Cog):
         img.paste(avatar, (430,70), avatar) # Pastes the Profilepicture on the Background Image
 
         with BytesIO() as image_binary:
-            image.save(image_binary, 'PNG')
+            img.save(image_binary, 'PNG')
             image_binary.seek(0)
             await ctx.send(file=discord.File(fp=image_binary, filename='card.png'))
 
