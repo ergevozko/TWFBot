@@ -54,7 +54,7 @@ class testWelcomer(commands.Cog):
             arr.seek(0) # image_binary.seek(0)
             imgFile = discord.File(arr)
             
-            await ctx.send(file=imgFile, text)
+            await ctx.send(file=imgFile)
 
 def setup(client):
     client.add_cog(testWelcomer(client))
