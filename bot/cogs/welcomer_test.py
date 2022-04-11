@@ -32,7 +32,7 @@ class testWelcomer(commands.Cog):
         text = "Halo"+user.mention+", selamat datang dan semoga betah di TeaWaffle!\n\nJangan lupa baca dulu peraturan server di 『 📜｜rules 』 » lalu perkenalkan dirimu di 『 👋｜introduction 』 » setelah itu pilih roles agar bisa berinteraksi dan dapat informasi menarik lainnya di 『 🥇｜get-roles 』"
         with BytesIO() as image_binary:
             
-            useravatar = user.avatar_url_as(size=500)  # Profilepicture = member.avatar_url_as(size=500)
+            useravatar = user.avatar_url_as(size=1024)  # Profilepicture = member.avatar_url_as(size=500)
             datavatar = BytesIO(await useravatar.read())
             avatar = Image.open(datavatar).convert("RGBA")
             avatar = circle(pfp)
