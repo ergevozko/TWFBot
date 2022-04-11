@@ -46,7 +46,7 @@ class testWelcomer(commands.Cog):
             draw.text((62, 340), msgtop, (255, 255, 255), font=msgtopfont) #draws top text
             draw.text((62, 420), msgbot, (255, 255, 255), font=msgtopfont) #draws bottom text
             
-            img.paste(pfp, (430,70), pfp) # Pastes the Profilepicture on the Background Image
+            img.paste(avatar, (430,70), pfp) # Pastes the Profilepicture on the Background Image
             
             arr = io.BytesIO()
             img.save(arr, format='PNG') # img.save(image_binary, 'PNG')
