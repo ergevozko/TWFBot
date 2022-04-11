@@ -20,7 +20,7 @@ class testWelcomer(commands.Cog):
     @commands.command()
     @commands.is_owner()
     async def testwelcome(self, ctx, user: discord.Member):
-        text = "Halo"+user.mention+", selamat datang dan semoga betah di TeaWaffle!\n\nJangan lupa baca dulu peraturan server di 『 📜｜rules 』 » lalu perkenalkan dirimu di 『 👋｜introduction 』 » setelah itu pilih roles agar bisa berinteraksi dan dapat informasi menarik lainnya di 『 🥇｜get-roles 』"
+        text = "Halo"+user.mention+", selamat datang dan semoga betah di TeaWaffle!\n\nJangan lupa baca dulu peraturan server di <#903295887692943361> » lalu perkenalkan dirimu di <#959261466966519808> » setelah itu pilih roles agar bisa berinteraksi dan dapat informasi menarik lainnya di <#959829754356322304>"
         useravatar = user.avatar_url_as(size=1024)  # Profilepicture = member.avatar_url_as(size=500)
         datavatar = BytesIO(await useravatar.read())
         avatar = Image.open(datavatar)
@@ -44,7 +44,7 @@ class testWelcomer(commands.Cog):
         msgbot = ("Member #" + str(ctx.guild.member_count))
         msgbotfont = ImageFont.truetype("bot/resources/welcomer/shentox-medium.otf", 28)
         wb, hb = draw.textsize(msgbot, msgbotfont)
-        draw.text(( (img.width - wt)/2, 340), msgtop, (255, 255, 255), font=msgtopfont)
+        draw.text(( (img.width - wt)/2, 320), msgtop, (255, 255, 255), font=msgtopfont)
         draw.text(( (img.width - wb)/2, 400), msgbot, (136, 136, 136), font=msgbotfont)
 
         img.paste(avatar, (430,70), avatar)
