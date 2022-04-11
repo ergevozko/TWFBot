@@ -7,8 +7,6 @@ import os
 import datetime
 import random
 import numpy as np
-
-class _circle():
     
 
 class testWelcomer(commands.Cog):
