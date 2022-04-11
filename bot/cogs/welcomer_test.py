@@ -31,8 +31,9 @@ class testWelcomer(commands.Cog):
         draw = ImageDraw.Draw(mask)
         draw.ellipse((0, 0) + bigsize, fill=255)
         mask = mask.resize(avatar.size, Image.ANTIALIAS)
-        mask = ImageOps.fit(avatar, mask.size, centering=(0.5, 0.5))
         avatar.putalpha(mask)
+        cavatar = ImageOps.fit(avatar, mask.size, centering=(0.5, 0.5))
+        cavatar.putalpha(mask)
         avatar = avatar.resize((240,240), Image.ANTIALIAS).convert("RGBA")
 
         img = Image.open("bot/resources/welcomer/twfcard.png")
