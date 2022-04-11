@@ -39,7 +39,7 @@ class testWelcomer(commands.Cog):
             
             img = Image.open("bot/resources/welcomer/twfcard.png")
             draw = ImageDraw.Draw(img)
-            msgtop = (user.id + "just joined the server")
+            msgtop = "{} just joined the server".format(user.id)
             msgtopfont = ImageFont.truetype("bot/resources/welcomer/shentox-medium.otf", 42)
             msgbot = ("Member #" + ctx.guild.member_count)
             msgbotfont = ImageFont.truetype("bot/resources/welcomer/shentox-medium.otf", 28)
