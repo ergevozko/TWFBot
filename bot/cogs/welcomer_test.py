@@ -39,8 +39,8 @@ class testWelcomer(commands.Cog):
             useravatar = user.avatar_url_as(size=1024)  # Profilepicture = member.avatar_url_as(size=500)
             datavatar = BytesIO(await useravatar.read())
             avatar = Image.open(datavatar).convert("RGBA")
-            avatar = circle(pfp)
-            avatar = pfp.resize((265,265)) # Resizes the Profilepicture so it fits perfectly in the circle
+            avatar = circle(avatar)
+            avatar = avatar.resize((265,265)) # Resizes the Profilepicture so it fits perfectly in the circle
             
             img = Image.open("bot\resources\welcomer\twfcard.png")
             draw = ImageDraw.Draw(img)
