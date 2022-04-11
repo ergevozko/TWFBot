@@ -15,19 +15,6 @@ class testWelcomer(commands.Cog):
         self.client = client
 
 
-    # Code to round the Image (Profilepicture)
-    @staticmethod
-    def circle(pfp,size = (240,240)):
-        pfp = pfp.resize(size, Image.ANTIALIAS).convert("RGBA")
-        bigsize = (pfp.size[0] * 3, pfp.size[1] * 3)
-        mask = Image.new('L', bigsize, 0)
-        draw = ImageDraw.Draw(mask)
-        draw.ellipse((0, 0) + bigsize, fill=255)
-        mask = mask.resize(pfp.size, Image.ANTIALIAS)
-        mask = ImageChops.darker(mask, pfp.split()[-1])
-        pfp.putalpha(mask)
-        return pfp
-
 
     # Test Welcome Message trigger with command
     @commands.command()
@@ -38,9 +25,17 @@ class testWelcomer(commands.Cog):
             
             useravatar = user.avatar_url_as(size=1024)  # Profilepicture = member.avatar_url_as(size=500)
             datavatar = BytesIO(await useravatar.read())
-            avatar = Image.open(datavatar).convert("RGBA")
-            avatar = circle(avatar)
-            avatar = avatar.resize((265,265)) # Resizes the Profilepicture so it fits perfectly in the circle
+            avatar = Image.open(datavatar)
+            
+            #make avatar circle
+            bigsize = (avatar.size[0] * 3, avatar.size[1] * 3)
+            mask = Image.new('L', bigsize, 0)
+            maskdraw = ImageDraw.Draw(mask)
+            maskdraw.ellipse((0, 0) + bigsize, fill=255)
+            mask = mask.resize(avatar.size, Image.ANTIALIAS)
+            mask = ImageChops.darker(mask, pfp.split()[-1])
+            avatar.putalpha(mask)
+            avatar = avatar.resize((240,240), Image.ANTIALIAS).convert("RGBA")
             
             img = Image.open("bot\resources\welcomer\twfcard.png")
             draw = ImageDraw.Draw(img)
