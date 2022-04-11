@@ -21,7 +21,7 @@ class testWelcomer(commands.Cog):
     @commands.is_owner()
     async def testwelcome(self, ctx, user: discord.Member):
         text = "Halo"+user.mention+", selamat datang dan semoga betah di TeaWaffle!\n\nJangan lupa baca dulu peraturan server di 『 📜｜rules 』 » lalu perkenalkan dirimu di 『 👋｜introduction 』 » setelah itu pilih roles agar bisa berinteraksi dan dapat informasi menarik lainnya di 『 🥇｜get-roles 』"
-        with BytesIO() as image_binary:
+        # with BytesIO() as image_binary:
             
             useravatar = user.avatar_url_as(size=1024)  # Profilepicture = member.avatar_url_as(size=500)
             datavatar = BytesIO(await useravatar.read())
@@ -48,9 +48,9 @@ class testWelcomer(commands.Cog):
             
             img.paste(avatar, (430,70), avatar) # Pastes the Profilepicture on the Background Image
             
-            arr = io.BytesIO()
+            arr = BytesIO()
             img.save(arr, format='PNG') # img.save(image_binary, 'PNG')
-            arr.seek(0) # image_binary.seek(0)
+            arr.seek(0) # image_binary.seek(0) 
             imgFile = discord.File(arr)
             
             await ctx.send(file=imgFile)
