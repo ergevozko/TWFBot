@@ -1,6 +1,6 @@
 import discord
 from discord.ext import commands
-from PIL import Image, ImageChops, ImageDraw, ImageFont
+from PIL import Image, ImageOps, ImageDraw, ImageFont
 from io import BytesIO
 import asyncio
 import os
