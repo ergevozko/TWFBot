@@ -28,11 +28,11 @@ class testWelcomer(commands.Cog):
         #make avatar circle
         bigsize = (avatar.size[0] * 3, avatar.size[1] * 3)
         mask = Image.new('L', bigsize, 0)
-        maskdraw = ImageDraw.Draw(mask)
-        maskdraw.ellipse((0, 0) + bigsize, fill=255)
+        draw = ImageDraw.Draw(mask)
+        draw.ellipse((0, 0) + bigsize, fill=255)
         mask = mask.resize(avatar.size, Image.ANTIALIAS)
         mask = ImageChops.darker(mask, avatar.split()[-1])
-        # avatar.putalpha(mask)
+        avatar.putalpha(mask)
         avatar = avatar.resize((240,240), Image.ANTIALIAS).convert("RGBA")
 
         img = Image.open("bot/resources/welcomer/twfcard.png")
