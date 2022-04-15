@@ -1,30 +1,27 @@
 import discord
 from discord.ext import commands
 
-class Lawak(commands.Cog):
+class Interaksi(commands.Cog):
+
+    """ Perintah bot untuk berinteraksi """
 
     def __init__(self, client):
         self.client = client
 
-    # >teawaffle_ping
-    @commands.command()
-    async def ping(self, ctx):
-        await ctx.send("pong?")
-
     # >teawaffle_hi
     @commands.command()
     async def hi(self, ctx):
-        await ctx.send("Hi juga. Jangan ganggu ya plis! Lagi nonton VTuber idola nih!")
+        await ctx.send("Hi juga! Btw jangan ganggu dulu ya, lagi nonton VTuber idola nih!")
 
     # >teawaffle_halo
     @commands.command()
     async def halo(self, ctx):
-        await ctx.send("Halo juga. Jangan ganggu ya plis! Lagi nonton VTuber idola nih!")
+        await ctx.send("Halo juga! Btw jangan ganggu dulu ya, lagi nonton VTuber idola nih!")
 
     # >teawaffle_simp
     @commands.command()
     async def simp(self, ctx):
-        await ctx.send("Masalah? Emang bot ga bole nge-simp?")
+        await ctx.send("Masalah ya? Emang bot ga bole nge-simp juga?")
 
     # >teawaffle_tes
     @commands.command()
@@ -37,4 +34,4 @@ class Lawak(commands.Cog):
         await ctx.send("I... I hate you! BAKA!")
 
 def setup(client):
-    client.add_cog(Lawak(client))
+    client.add_cog(Interaksi(client))
