@@ -13,7 +13,8 @@ else:
 
 
 TOKEN = os.getenv("DISCORD_TOKEN")
-intents = Intents.all()
+intents = discord.Intents.default()
+intents.members = True
 client = commands.Bot(command_prefix=config.prefik, intents=intents, description=config.deskripsi)
 
 
