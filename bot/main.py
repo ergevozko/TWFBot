@@ -31,7 +31,7 @@ async def ping(ctx):
         pingtime = time.time()
         pingms = await ctx.send("*Eh...*")
         ping = (time.time() - pingtime) * 1000
-        await client.edit_message(pingms, "Oh... **pong!** Btw ping responnya sekitar `%dms`" % ping)
+        await ctx.edit_message(pingms, "Oh... **pong!** Btw ping responnya sekitar `%dms`" % ping)
         print("Seseorang nge-ping bot dengan response time %dms." % ping)
     except:
         await ctx.send(config.err_msg_gtw)
