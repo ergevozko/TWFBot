@@ -13,7 +13,7 @@ class Interaksi(commands.Cog):
     @commands.command(aliases=["halo"])
     async def hi(self, ctx):
         """ Menyapa bot """
-        await ctx.send("Hi juga! Btw jangan ganggu dulu ya, lagi nonton VTuber idola nih!")
+        await ctx.send("Yo! Sebentar ya, lagi nonton VTuber kesayangan nih!")
 
     @commands.command(aliases=["simper","ngesimp"])
     async def simp(self, ctx):
@@ -25,7 +25,7 @@ class Interaksi(commands.Cog):
         """ Testing bot """
         await ctx.send("Ti... ga jadi 😝")
 
-    @commands.command()
+    @commands.command(aliases=["love"])
     async def iloveyou(self, ctx):
         """ Kirim cinta ke bot """
         await ctx.send(ctx.message.author.mention + " " + random.choice(config.tsundere))

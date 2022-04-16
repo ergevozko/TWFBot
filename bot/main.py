@@ -26,13 +26,15 @@ async def on_ready():
     
 @client.command()
 async def ping(ctx):
-    """ Nge-ping bot dapat response time. """
+    """ Ping bot! """
     try:
         pingtime = time.time()
-        pingms = await ctx.send("*Eh...*")
+        message = await ctx.send("Eh...")
+        latency = client.latency *1000
         ping = (time.time() - pingtime) * 1000
-        await ctx.edit_message(pingms, "Oh... **pong!** Btw ping responnya sekitar `%dms`" % ping)
-        print("Seseorang nge-ping bot dengan response time %dms." % ping)
+        embed = discord.embed(title="PING PONG!", description=f"**Latency**: {round(latency)}ms\n**Response time**: {round(ping)}ms", color=0xff6a3d)
+        await message.edit(content=f"Oh... **Pong!**", embed = embed)
+        print(f"Ada yang ngeping bot! Latensi/Response nya {round(latency)}/{round(ping)} ms")
     except:
         await ctx.send(config.err_msg_gtw)
 
