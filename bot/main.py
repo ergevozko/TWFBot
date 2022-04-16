@@ -27,14 +27,17 @@ async def on_ready():
 @client.command()
 async def ping(ctx):
     """Ping bot!"""
-    start = time.time()
-    message = await ctx.send(content="Eh...", embed=None)
-    end = time.time()
-    ping = (end - start) * 1000
-    latency = client.latency * 1000
-    embed = discord.embed(title="PING PONG!", description=f"**Latency**: {round(latency)}ms\n**Response time**: {round(ping,2)}ms", color=0xFF6A3D)
-    await message.edit(content="Oh... **Pong!**", embed=embed)
-    print(f"Ada yang ngeping bot! Latensi/Response : {round(latency)}/{round(ping,2)} ms")
+    try:
+        start = time.time()
+        message = await ctx.send(content="Eh...", embed=None)
+        end = time.time()
+        ping = (end - start) * 1000
+        latency = client.latency * 1000
+        embed = discord.Embed(title="PING PONG!", description=f"**Latency**: {round(latency)}ms\n**Response time**: {round(ping,2)}ms", color=0xFF6A3D)
+        await message.edit(content="Oh... **Pong!**", embed=embed)
+        print(f"Ada yang ngeping bot! Latensi/Response : {round(latency)}/{round(ping,2)} ms")
+    except:
+        await ctx.send(config.err_msg_gtw)
 
 @client.command()
 @commands.is_owner()
