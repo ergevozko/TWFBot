@@ -23,34 +23,36 @@ async def on_ready():
     print(f"Logged in as {client.user.name}({client.user.id})")
     await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="VTUBERS"))
     print("Bot is online")
-    
+
 @client.command()
 async def ping(ctx):
-    """ Ping bot! """
-   start = time.time()
-   message = await ctx.send(content="Eh...", embed = None)
-   end = time.time()
-   ping = (end - start) * 1000
-   latency = client.latency * 1000
-   embed = discord.embed(title="PING PONG!", description=f"**Latency**: {round(latency)}ms\n**Response time**: {round(ping,2)}ms", color=0xFF6A3D)
-   await message.edit(content="Oh... **Pong!**", embed = embed)
-   print(f"Ada yang ngeping bot! Latensi/Response : {round(latency)}/{round(ping,2)} ms")
+    """Ping bot!"""
+    start = time.time()
+    message = await ctx.send(content="Eh...", embed=None)
+    end = time.time()
+    ping = (end - start) * 1000
+    latency = client.latency * 1000
+    embed = discord.embed(title="PING PONG!", description=f"**Latency**: {round(latency)}ms\n**Response time**: {round(ping,2)}ms", color=0xFF6A3D)
+    await message.edit(content="Oh... **Pong!**", embed=embed)
+    print(f"Ada yang ngeping bot! Latensi/Response : {round(latency)}/{round(ping,2)} ms")
 
 @client.command()
 @commands.is_owner()
 async def load(ctx, extension):
-    """ Menjalankan ekstensi """
+    """Menjalankan ekstensi"""
     client.load_extension(f"bot.cogs.{extension}")
 
 @client.command()
 @commands.is_owner()
 async def unload(ctx, extension):
-    """ Mencopot ekstensi """
+    """Mencopot ekstensi"""
     client.unload_extension(f"bot.cogs.{extension}")
+
 
 for filename in os.listdir(f"bot/cogs"):
     if filename.endswith(".py"):
         client.load_extension(f"bot.cogs.{filename[:-3]}")
+
 
 if __name__ == "__main__":
     client.run(TOKEN)
