@@ -1,8 +1,8 @@
 import discord
 from discord.ext import commands
+from datetime import datetime, time
 import sys
 import os
-import time
 
 
 # Config.py setup
@@ -28,13 +28,14 @@ async def on_ready():
 async def ping(ctx):
     """ Ping bot! """
     try:
-        start_ping = time.time()
+        start = time.perf_counter()
         message = await ctx.send("Eh...")
-        end_ping = time.time()
-        latency = client.latency
-        embed = discord.embed(title="PING PONG!", description=f"**Latency**: {round(latency * 1000)}ms\n**Response time**: {round((end_ping - start_ping) * 1000)}ms", color=0xff6a3d)
+        end = time.perf_counter()
+        ping = (end - start) * 1000
+        latency = client.latency * 1000
+        print(f"Ada yang ngeping bot! Latensi/Response : {round(latency)}/{round(ping,2)} ms")
+        embed = discord.embed(title="PING PONG!", description=f"**Latency**: {round(latency)}ms\n**Response time**: {round(ping,2)}ms", color=0xff6a3d)
         await message.edit(content=f"Oh... **Pong!**", embed = embed)
-        print(f"Ada yang ngeping bot! Latensi/Response nya {round(latency * 1000)}/{round((end_ping - start_ping) * 1000)} ms")
     except:
         await ctx.send(config.err_msg_gtw)
 
