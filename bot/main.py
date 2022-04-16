@@ -34,7 +34,7 @@ async def ping(ctx):
         ping = (end - start) * 1000
         latency = client.latency * 1000
         print(f"Ada yang ngeping bot! Latensi/Response : {round(latency)}/{round(ping,2)} ms")
-        embed = discord.embed(title="PING PONG!", description=f"**Latency**: {round(latency)}ms\n**Response time**: {round(ping,2)}ms", color=0xff6a3d)
+        embed = discord.embed(title="PING PONG!", description=f"**Latency**: {round(latency)}ms\n**Response time**: {round(ping,2)}ms", colour=0xff6a3d)
         await message.edit(content=f"Oh... **Pong!**", embed = embed)
     except:
         await ctx.send(config.err_msg_gtw)
