@@ -1,8 +1,10 @@
 import discord
-from discord.ext import commands
 import sys
 import os
 import time
+
+from discord.ext import commands
+from bot.utils import permissions
 
 
 # Config.py setup
@@ -12,17 +14,21 @@ else:
     import config
 
 
-TOKEN = os.getenv("DISCORD_TOKEN")
-intents = discord.Intents.default()
-intents.members = True
-client = commands.Bot(command_prefix=config.prefik, intents=intents, description=config.deskripsi)
+client = commands.Bot(
+    command_prefix=config.PREFIX,
+    description=config.BOT_DESC,
+    intents=discord.Intents(  # kwargs found at https://docs.pycord.dev/en/master/api.html?highlight=discord%20intents#discord.Intents
+        guilds=True, members=True, messages=True, reactions=True, presences=True, message_content=True,
+    )
+)
 
 
 @client.event
 async def on_ready():
     print(f"Logged in as {client.user.name}({client.user.id})")
-    await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="VTUBERS"))
+    await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=config.BOT_WATCH))
     print("Bot is online")
+
 
 @client.command()
 async def ping(ctx):
@@ -35,21 +41,25 @@ async def ping(ctx):
         latency = client.latency * 1000
         embed = discord.Embed(title="PING PONG!", description=f"**Latency**: {round(latency)}ms\n**Response time**: {round(ping,2)}ms", color=0xFF6A3D)
         await message.edit(content="Oh... **Pong!**", embed=embed)
-        print(f"Ada yang ngeping bot! Latensi/Response : {round(latency)}/{round(ping,2)} ms")
+        print(f"Pinging bot dengan Latensi/Response: {round(latency)}/{round(ping)} ms")
     except:
-        await ctx.send(config.err_msg_gtw)
+        await ctx.send(config.ERR_MSG_GENERIC)
 
-@client.command()
-@commands.is_owner()
-async def load(ctx, extension):
-    """Menjalankan ekstensi"""
-    client.load_extension(f"bot.cogs.{extension}")
 
-@client.command()
-@commands.is_owner()
-async def unload(ctx, extension):
-    """Mencopot ekstensi"""
-    client.unload_extension(f"bot.cogs.{extension}")
+@client.command(hidden=True)
+@commands.check(permissions.is_botmaster)
+async def load(ctx, ekstensi):
+    """Mengaktifkan ekstensi"""
+    client.load_extension(f"bot.cogs.{ekstensi}")
+    print(f"Cogs '{ekstensi}' diaktifkan!")
+
+
+@client.command(hidden=True)
+@commands.check(permissions.is_botmaster)
+async def unload(ctx, ekstensi):
+    """Menonaktifkan ekstensi"""
+    client.unload_extension(f"bot.cogs.{ekstensi}")
+    print(f"Cogs '{ekstensi}' dinonaktifkan!")
 
 
 for filename in os.listdir(f"bot/cogs"):
@@ -58,4 +68,4 @@ for filename in os.listdir(f"bot/cogs"):
 
 
 if __name__ == "__main__":
-    client.run(TOKEN)
+    client.run(config.BOT_TOKEN)

@@ -1,5 +1,6 @@
 import discord
 import os
+
 from discord.ext import commands
 from PIL import Image, ImageOps, ImageDraw, ImageFont
 from io import BytesIO
@@ -13,7 +14,8 @@ class TesWelcomer(commands.Cog, description = "Ngetes 'Pesan Selamat Datang' via
     @commands.command(aliases=["welcomer_tes"])
     @commands.is_owner()
     async def tes_welcomer(self, ctx, user: discord.Member):
-        """ Perintah uji coba Pesan Selamat Datang """
+        """Perintah uji coba Pesan Selamat Datang"""
+        # Pesan selamat datang
         text = "Halo "+user.mention+", selamat datang dan semoga betah di TeaWaffle!\n\nJangan lupa baca dulu peraturan server di『 <#903295887692943361> 』» lalu perkenalkan dirimu di『 <#959261466966519808> 』» setelah itu pilih roles agar bisa berinteraksi dan dapat informasi menarik lainnya di『 <#959829754356322304> 』"
         # Mendapatkan avatar member
         useravatar = user.avatar_url_as(size=1024)
@@ -30,13 +32,13 @@ class TesWelcomer(commands.Cog, description = "Ngetes 'Pesan Selamat Datang' via
         cavatar.putalpha(mask)
         avatar = avatar.resize((240,240), Image.ANTIALIAS).convert("RGBA")
         # Membuat background
-        img = Image.open("bot/resources/welcomer/twfcard.png")
+        img = Image.open("bot/assets/welcomer/twfcard.png")
         draw = ImageDraw.Draw(img)
         msgtop = (str(user) + " just joined the server")
-        msgtopfont = ImageFont.truetype("bot/resources/welcomer/shentox-medium.otf", 42)
+        msgtopfont = ImageFont.truetype("bot/assets/welcomer/shentox-medium.otf", 42)
         wt, ht = draw.textsize(msgtop, msgtopfont)
         msgbot = ("Member #" + str(ctx.guild.member_count))
-        msgbotfont = ImageFont.truetype("bot/resources/welcomer/shentox-medium.otf", 30)
+        msgbotfont = ImageFont.truetype("bot/assets/welcomer/shentox-medium.otf", 30)
         wb, hb = draw.textsize(msgbot, msgbotfont)        
         draw.text( ((img.width - wt)/2, 330), msgtop, (255, 255, 255), font=msgtopfont )
         draw.text( ((img.width - wb)/2, 400), msgbot, (136, 136, 136), font=msgbotfont )
@@ -47,7 +49,7 @@ class TesWelcomer(commands.Cog, description = "Ngetes 'Pesan Selamat Datang' via
             img.save(image_binary, "PNG")
             image_binary.seek(0)
             await ctx.send(file=discord.File(fp=image_binary, filename="card.png"), content=text)
-            
+
 
 def setup(client):
     client.add_cog(TesWelcomer(client))
