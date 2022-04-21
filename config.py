@@ -1,4 +1,7 @@
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Konfigurasi bot
 PREFIX = ">teawaffle_"
