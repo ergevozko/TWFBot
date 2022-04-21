@@ -8,6 +8,7 @@ multidict
 numpy
 Pillow
 pyfiglet
+python-dotenv
 requests
 typing-extensions
 yarl
