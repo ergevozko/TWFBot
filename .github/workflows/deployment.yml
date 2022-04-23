@@ -15,4 +15,5 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "teawafflebot"
           heroku_email: ${{secrets.HEROKU_EMAIL}}
-          branch: dev
+          remote_branch: dev
+          rollbackonhealthcheckfailed: true
