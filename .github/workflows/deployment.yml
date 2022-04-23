@@ -1,4 +1,4 @@
-name: "BOT Deploy"
+name: Deploy
 
 on:
   push:
@@ -13,6 +13,6 @@ jobs:
       - uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "teawafflebot"
+          heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
           heroku_email: ${{secrets.HEROKU_EMAIL}}
-          branch: eksperimen/1.0
+          branch: "eksperimen/1.0"
