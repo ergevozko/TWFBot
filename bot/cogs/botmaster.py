@@ -102,6 +102,13 @@ class BotMaster(commands.Cog):
         sys.exit(0)
 
 
+    @commands.group()
+    @commands.check(permissions.is_botmaster)
+    async def change(self, ctx):
+        if ctx.invoked_subcommand is None:
+            await ctx.send_help(str(ctx.command))
+
+
     @commands.command()
     @commands.check(permissions.is_botmaster)
     async def dm(self, ctx, user: discord.User, *, message: str):
