@@ -11,8 +11,9 @@ def traceback_maker(err, advance: bool = True):
     error = ('```py\n{1}{0}: {2}\n```').format(type(err).__name__, _traceback, err)
     return error if advance else f"{type(err).__name__}: {err}"
 
+
 def timetext(name):
-    """ Timestamp, but in text form """
+    """Timestamp, but in text form"""
     return f"{name}_{int(time.time())}.txt"
 
 
@@ -50,7 +51,7 @@ def actionmessage(case, mass=False):
 async def prettyResults(ctx, filename: str = "Hasil", resultmsg: str = "Berikut hasilnya:", loop=None):
     """A prettier way to show loop results"""
     if not loop:
-        return await ctx.send("Kosong gak ada apa-apa...")
+        return await ctx.send("Tidak ada hasil yang ditemukan...")
 
     pretty = "\r\n".join([f"[{str(num).zfill(2)}] {data}" for num, data in enumerate(loop, start=1)])
 

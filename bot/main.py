@@ -4,7 +4,8 @@ import os
 import time
 
 from discord.ext import commands
-from bot.utils import permissions
+from utils import default
+from utils.data import Bot, HelpFormat
 
 
 # Config.py setup
@@ -15,51 +16,21 @@ else:
 
 
 client = commands.Bot(
-    command_prefix=config.PREFIX,
-    description=config.BOT_DESC,
-    intents=discord.Intents(  # kwargs found at https://docs.pycord.dev/en/master/api.html?highlight=discord%20intents#discord.Intents
-        guilds=True, members=True, messages=True, reactions=True, presences=True, message_content=True,
+    command_prefix=config.PREFIX, prefix=config.PREFIX, description=config.BOT_DESC,
+    owner_ids=config.BOT_MASTER, command_attrs=dict(hidden=True), help_command=HelpFormat(),
+    allowed_mentions=discord.AllowedMentions(roles=False, users=True, everyone=False),
+    intents=discord.Intents(
+        # kwargs found at https://docs.pycord.dev/en/master/api.html?highlight=discord%20intents#discord.Intents
+        guilds=True, members=True, messages=True, reactions=True, presences=True
     )
 )
 
 
 @client.event
 async def on_ready():
-    print(f"Logged in as {client.user.name}({client.user.id})")
+    print("Bot sudah online!")
     await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=config.BOT_WATCH))
-    print("Bot is online")
-
-
-@client.command()
-async def ping(ctx):
-    """Ping bot!"""
-    try:
-        start = time.time()
-        message = await ctx.send(content="Eh...", embed=None)
-        end = time.time()
-        ping = (end - start) * 1000
-        latency = client.latency * 1000
-        embed = discord.Embed(title="PING PONG!", description=f"**Latency**: {round(latency)}ms\n**Response time**: {round(ping,2)}ms", color=0xFF6A3D)
-        await message.edit(content="Oh... **Pong!**", embed=embed)
-        print(f"Pinging bot dengan Latensi/Response: {round(latency)}/{round(ping)} ms")
-    except:
-        await ctx.send(config.ERR_MSG_GENERIC)
-
-
-@client.command(hidden=True)
-@commands.check(permissions.is_botmaster)
-async def load(ctx, ekstensi):
-    """Mengaktifkan ekstensi"""
-    client.load_extension(f"bot.cogs.{ekstensi}")
-    print(f"Cogs '{ekstensi}' diaktifkan!")
-
-
-@client.command(hidden=True)
-@commands.check(permissions.is_botmaster)
-async def unload(ctx, ekstensi):
-    """Menonaktifkan ekstensi"""
-    client.unload_extension(f"bot.cogs.{ekstensi}")
-    print(f"Cogs '{ekstensi}' dinonaktifkan!")
+    print(f"Terdaftar di {client.guild.name} sebagai {client.user.name} [ {client.user.id} ]")
 
 
 for filename in os.listdir(f"bot/cogs"):

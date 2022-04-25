@@ -33,7 +33,11 @@ class Interaksi(commands.Cog):
     @commands.command(aliases=["love"])
     async def iloveyou(self, ctx):
         """Kirim cinta ke bot"""
-        await ctx.send(ctx.message.author.mention + " " + random.choice(config.botlove))
+        BOTRESP = [
+            "Hee? Ada-ada aja kamu kak",
+            "Ah masa? Bercanda pasti nih!!"
+        ]
+        await ctx.send(ctx.message.author.mention + " " + random.choice(BOTRESP))
 
 
     @commands.command(aliases=["meluk", "hug"])
@@ -49,6 +53,18 @@ class Interaksi(commands.Cog):
                     await ctx.send("Kak" + member.mention + " dipeluk sama kak " + ctx.message.author.mention + "!")
         except:
             await ctx.send(config.ERR_MSG_GENERIC)
+
+
+    @commands.command(aliases=["8bola","boladelapan","8ball", "eightball"])
+    async def bola8(self, ctx, *, question: commands.clean_content):
+        """Konsolutasi 8bola"""
+        BOTRESP = [
+            "It is certain", "It is decidedly so", "Without a doubt", "Yes, definitely", "You may rely on it", "As i see it, yes", "Most likely",
+            "Outlook good", "Yes", "Signs point to yes", "Reply haze, try again", "Ask again later", "Better not tell you now", "Cannot predict now",
+            "Concentrate and ask again", "Do not count on it", "My reply is no", "My sources say no", "Outlook not so good", "Very doubtful"
+        ]
+        answer = random.choice(ballresponse)
+        await ctx.send(f"🎱 **Pertanyaan:** {question}\n**Jawaban:** {answer}")
 
 
 def setup(client):

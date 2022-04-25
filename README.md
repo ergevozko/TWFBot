@@ -1,7 +1,7 @@
 <h1 align="center">『 TEAWAFFLE BOT 』</h1>
 <p align="center">
   <a align="center" href="https://github.com/ergevozko/twfbot/">
-    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgLwzQSlO2072fUpeNkQKEZIYZ6dfyqpqkgqELo0BgVuMw7SH7tNpkInM7sQPrSp8WXoviw8JOtVRCBdn3dDqx844woFEOXwKrLBu3nGBwDjZcNaMOOdsQ4dPV_NkSiFf0UK7d0dr49Lzac-IQLmp7butSpepseHZIvP-sbLYOJKmxQ72Q7HzUoKQ/s400-rw-d-e365/twfbot-icon2.png" alt="TeaWaffle Discord Bot">
+    <img src="https://blogger.googleusercontent.com/img/a/AVvXsEgLwzQSlO2072fUpeNkQKEZIYZ6dfyqpqkgqELo0BgVuMw7SH7tNpkInM7sQPrSp8WXoviw8JOtVRCBdn3dDqx844woFEOXwKrLBu3nGBwDjZcNaMOOdsQ4dPV_NkSiFf0UK7d0dr49Lzac-IQLmp7butSpepseHZIvP-sbLYOJKmxQ72Q7HzUoKQ=s400-rw" alt="TeaWaffle Discord Bot">
     <br>
     <img src="https://img.shields.io/badge/Bot_server_discord_TeaWaffle-FF6A3D?style=for-the-badge" alt="Description">
   </a>
@@ -16,7 +16,7 @@
   <br><br>
   <a href="https://www.codefactor.io/repository/github/ergevozko/twfbot"><img src="https://img.shields.io/badge/codefactor-A%2B-00b16a" alt="CodeFactor"></a>
   <a href="https://github.com/ergevozko/twfbot/actions/workflows/codeql-analysis.yml"><img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/ergevozko/twfbot/CodeQL?label=CodeQL&logo=github&logoColor=959DA5"></a>
-  <a href="https://discord.gg/fC3cP8N8qC"><img src="https://img.shields.io/github/deployments/ergevozko/twfbot/twfbot?label=deploy&logo=github&logoColor=959DA5" alt="deployments"></a>
+  <a href="https://discord.gg/fC3cP8N8qC"><img src="https://img.shields.io/github/workflow/status/ergevozko/twfbot/BOTDeploy?label=deploy&logo=github&logoColor=959DA5" alt="deployments"></a>
 </p>
 <br>
 

@@ -1,7 +1,8 @@
 import discord
-from discord.ext import commands
-from bot.utils import default
 import config
+
+from discord.ext import commands
+from utils import default
 
 
 BOTMASTER = config.BOT_MASTER
@@ -44,15 +45,15 @@ async def check_priv(ctx, member):
         # Now permission check
         if member.id in owners:
             if ctx.author.id not in owners:
-                return await ctx.send(f"Um... aku gak bisa {ctx.command.name} penciptaku kak ;-;")
+                return await ctx.send(f"Maaf kak, gak bisa {ctx.command.name} penciptaku kak... ;-;")
             else:
                 pass
         if member.id == ctx.guild.owner.id:
-            return await ctx.send(f"Eh... kita gak bisa {ctx.command.name} owner lho kak... wkwk")
+            return await ctx.send(f"Maaf kak, gak bisa {ctx.command.name} owner kak... wkwk")
         if ctx.author.top_role == member.top_role:
-            return await ctx.send(f"Maaf kak, role yang sama gak boleh saling {ctx.command.name} kak...")
+            return await ctx.send(f"Maaf kak, role yang sama gak bisa saling {ctx.command.name} kak...")
         if ctx.author.top_role < member.top_role:
-            return await ctx.send(f"Maaf kak, gak bisa {ctx.command.name}, role dia lebih tinggi darimu kak...")
+            return await ctx.send(f"Maaf kak, gak bisa {ctx.command.name} karna role dia lebih tinggi...")
     except Exception:
         pass
 

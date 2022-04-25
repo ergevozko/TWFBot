@@ -2,17 +2,17 @@ import discord
 import os
 
 from discord.ext import commands
+from utils import permissions
 from PIL import Image, ImageOps, ImageDraw, ImageFont
 from io import BytesIO
     
 class TesWelcomer(commands.Cog, description = "Ngetes 'Pesan Selamat Datang' via perintah bot"):
-
     def __init__(self, client):
         self.client = client
 
 
     @commands.command(aliases=["welcomer_tes"])
-    @commands.is_owner()
+    @commands.check(permissions.is_botmaster)
     async def tes_welcomer(self, ctx, user: discord.Member):
         """Perintah uji coba Pesan Selamat Datang"""
         # Pesan selamat datang

@@ -3,10 +3,12 @@ aiohttp
 async-timeout
 attrs
 chardet
+datetime
 idna
 multidict
 numpy
 Pillow
+psutil
 pyfiglet
 python-dotenv
 requests
