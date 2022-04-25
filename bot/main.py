@@ -30,7 +30,7 @@ client = commands.Bot(
 async def on_ready():
     print("Bot sudah online!")
     await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=config.BOT_WATCH))
-    print(f"Terdaftar di {client.guild.name} sebagai {client.user.name} [ {client.user.id} ]")
+    print(f"Terdaftar sebagai {client.user.name} [ {client.user.id} ]")
 
 
 for filename in os.listdir(f"bot/cogs"):

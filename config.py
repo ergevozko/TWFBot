@@ -10,7 +10,7 @@ BOT_DESC = "Bot server Discord nya TeaWaffle"
 BOT_COLOR = 0xFF6A3D
 BOT_WATCH = "VTubers"
 BOT_TOKEN = os.getenv("DISCORD_TOKEN")
-BOT_MASTER = os.getenv("BOT_MASTER")
+BOT_MASTER = [959287969179635753, 760120101260623882]
 
 # Discord server ID
 GUILD_ID = int(os.getenv("ID_GUILD"))
