@@ -146,7 +146,7 @@ class BotMaster(commands.Cog):
 
 
     @change.command(name="avatar")
-    @commands.check(permissions.is_owner)
+    @commands.check(permissions.is_botmaster)
     async def change_avatar(self, ctx, url: str = None):
         """Mengganti avatar"""
         if url is None and len(ctx.message.attachments) == 1:
